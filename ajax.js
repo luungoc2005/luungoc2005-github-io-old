@@ -6,14 +6,14 @@
 	var currentResults;
 	var currentArtist;
 	
-	var searchFor = function (query) {
+	spotify.searchFor = function (query) {
 		if (query == null) return;
-		if (query == "") $(markups.results_box).empty();
+		if (query == "") controls.clearResultBox();
 		
-		$.getJSON(spotifyUri.search + "?q=" + encodeURIComponent(query) + "&type=artist", 
+		$.getJSON(spotifyUri.search + "?q=" + encodeURIComponent(query) + "&type=artist" + "&limit=" + defaults.max_results, 
 			function(result) {
 				if (result == null) return;
-				$(markups.results_box).empty();
+				controls.clearResultBox();
 				
 				currentResults = result["artists"]["items"] || currentResults;
 				
@@ -23,23 +23,20 @@
 	
 	spotify.addSearchResults = function() {
 		$.each(currentResults, function(index, value) {
-			if (index + 1 > defaults.max_results) return false;
+			//if (index + 1 > defaults.max_results) return false;
 			
-			controls.addSearchResultItem(value["name"]);
+			var imageUrl = (value["images"] == null || value["images"].length == 0)?"":value["images"][value["images"].length - 1]["url"];
+			controls.addSearchResultItem(index, value["name"], value["genres"].toString(), value["popularity"], imageUrl);
 		});
 	}
 	
-	spotify.setCurrentArtist = function (artist) {
-		currentArtist = artist;
+	spotify.setCurrentArtist = function (id) {
+		currentArtist = (currentResults != null && currentResults.length>0)?
+						currentResults[id]:null;
 	}
 	
 	spotify.gotoResult = function() {
 		if (currentResults != null && currentResults.length > 0) setCurrentArtist(currentResults[0]);
 	}
 	
-	spotify.init = function() {
-		$(markups.search_box).on("change paste keyup", function () {
-			searchFor($(markups.search_box).val());
-		});
-	};
 })(global, controls, spotify, jQuery);
