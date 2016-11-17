@@ -1,0 +1,39 @@
+#searchBox {
+	resize: none;
+	background-image: url(searchicon.png);
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 40px;
+	margin: 5px;
+	height: 100%;
+}
+
+#searchResults {
+    position: relative;
+	min-width: 300px;
+	z-index: 50;
+	display: none;
+}
+
+.artistInfo>.panel {
+	padding: 10px;
+}
+
+.jumbotron {
+	position: absolute;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.search_item {
+	padding-left: 25px;
+}
+
+.item_img {
+	width: 64px;
+	height: 64px;
+	padding: 0px;
+	background-color: #e7e7e7;
+}
