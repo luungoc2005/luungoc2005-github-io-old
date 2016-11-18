@@ -15,19 +15,112 @@
 # in the templates via {{ site.myvariable }}.
 title: luungoc2005
 email: luungoc2005@gmail.com
+name: "The Sloth"
 description: > # this means to ignore newlines until "baseurl:"
  Tech addict with a passion for art.
- 
+
+locale: "en"
+words_per_minute : 200
+
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://luungoc2005.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: luungoc2005
 github_username:  luungoc2005
-
+# Settings for analytics helper
+# Set 'provider' to the analytics provider you want to use.
+# Set 'provider' to false to turn analytics off globally.
+#        
+analytics :
+  provider : google
+  google : 
+      tracking_id : 'UA-87659525-1'
+  getclicky :
+    site_id :
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima
+theme: minimal-mistakes-jekyll
 gems:
   - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jemoji
+  
+ # Reading Files
+include:
+  - .htaccess
+  - _pages
 exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
   - Gemfile
-  - Gemfile.lock
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - tmp
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      read_time: true
+      share: true
+      related: true
