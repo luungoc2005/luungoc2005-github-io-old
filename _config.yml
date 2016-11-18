@@ -39,7 +39,7 @@ analytics :
 # Build settings
 markdown: kramdown
 # theme: minima
-theme: minimal-mistakes-jekyll
+# theme: minimal-mistakes-jekyll
 gems:
   - jekyll-feed
   - jekyll-paginate
