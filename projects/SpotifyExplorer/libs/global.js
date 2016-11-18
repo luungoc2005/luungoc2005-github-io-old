@@ -13,6 +13,9 @@ var controls = controls || {};
 		results_box: "searchResults",
 		search_item: "search-item",
 		search_id: "search-id-",
-		current_artist: "current-artist"
+		current_artist: "current-artist",
+		next_artist: "next-artist-",
+		prev_artist: "prev-artist",
+		hide_info: "hiddenInfo"
 	}
 })(global, jQuery)

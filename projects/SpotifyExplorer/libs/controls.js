@@ -1,7 +1,7 @@
 (function (global, controls, $) {
 	//helper functions
 	function capitalize(textToFix) {
-		return textToFix.replace(/\b\w/g, function(l) { return l.toUpperCase()});
+		return (!textToFix)?"N/A":textToFix.replace(/\b\w/g, function(l) { return l.toUpperCase()});
 	}
 	
 	controls.makeStar = function(target, popularity) { //popularity in base 100
@@ -34,6 +34,8 @@
 		target.find(".item_followers").text(followers + " followers");
 		
 		controls.makeStar(target.find("#artist-pop"), pop);
+		
+		target.css("visibility", "visible");
 	}
 	
 	controls.updateArtistSmall = function(target, name, genres, pop, img) {
@@ -105,9 +107,52 @@
 		$("#" +markups.results_box).hide("fast")
 	}
 	
+	controls.adjustRelated = function(count) {
+		for (var i = 0; i <= 2; i++) {
+			if (i + 1 <= count) {
+				$("#" + markups.next_artist + i).css("visibility", "visible");	
+				if (i > 0) {
+					$("#" + markups.next_artist + i).show("fast");
+				}
+			}
+			else {
+				if (i > 0) {
+					$("#" + markups.next_artist + i).hide("fast");
+				}
+				else {
+					$("#" + markups.next_artist + i).css("visibility", "hidden");
+				}
+			}
+			//remove all offsets
+			$("#" + markups.next_artist + i).removeClass("col-md-offset-2");
+			$("#" + markups.next_artist + i).removeClass("col-md-offset-4");
+		}
+		switch (count) {
+			case 1:
+				$("#" + markups.next_artist + "0").addClass("col-md-offset-4");
+				break;
+			case 2:
+				$("#" + markups.next_artist + "0").addClass("col-md-offset-2");
+				break;
+			default:			
+		}
+	}
+	
+	window.onclick = function(event) {
+		if (!event.target.matches("#" + markups.search_box)) {
+			controls.hideSearch();
+		}
+	}
+	
 	controls.init = function() {
-		$("#" +markups.search_box).on("textInput input focusin", function () {
+		$("#" + markups.search_box).on("textInput input focusin", function () {
 			spotify.searchFor($("#" + markups.search_box).val());
 		});
+		$("#" + markups.prev_artist).on("click", spotify.pushPrevArtist);
+		for (var i = 0; i <= 2; i++) {
+			$("#" + markups.next_artist + i).on("click", function() {
+				spotify.pushRelatedArtist(this.id.replace(markups.next_artist,""));
+			});
+		}
 	}
 })(global, controls, jQuery)
