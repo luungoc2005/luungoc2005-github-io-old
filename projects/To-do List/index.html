@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>To-do List</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="well">
+	<div id="container">
+		<div id="header"> To Do List </div>
+
+		<div class="task-list do-accordion" id="pending">
+			<h3>Pending</h3>
+			<div class="task-container"></div>
+		</div>
+
+		<div class="task-list do-accordion" id="inProgress">
+			<h3>In Progress</h3>			
+			<div class="task-container"></div>
+		</div>
+
+		<div class="task-list do-accordion" id="completed">
+			<h3>Completed</h3>
+			<div class="task-container"></div>
+		</div>
+
+		<div class="task-list">
+			<h3>Add a task</h3>
+			<form id="todo-form">
+				<input type="text" placeholder="Title" />
+				<textarea placeholder="Description"></textarea>
+				<input type="text" id="datepicker" placeholder="Due Date (dd/mm/yyyy)" />
+				<input type="text" placeholder="Owner" />
+				<input type="button" class="btn btn-primary" value="Add Task" onclick="todo.add();" />
+				<input type="button" class="btn btn-default" value="Clear Data" onclick="todo.clear();" />
+			</form>
+
+			<div id="delete-div">
+				Drag Here to Delete
+			</div>
+		</div>	
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		
+		<script src="script.js"></script>
+		
+		<script type="text/javascript">
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker("option", "dateFormat", "dd/mm/yy");
+			$(".task-container").droppable();
+			$(".do-accordion").accordion({ collapsible: true, animate: false });
+			$(".todo-task").draggable({ revert: "valid", revertDuration:200 });
+		</script>
+	</div>	
+</body>
+</html>
