@@ -9,8 +9,8 @@ An artist explorer app for Spotify, making use of Spotify Web API for search, su
 
 First working version on 19 November, 2016
 
-[Try it]({{ site.url }}/projects/SpotifyExplorer/index.html)
-[Repository](https://github.com/luungoc2005/SpotifyExplorer)
+ + [Try it]({{ site.url }}/projects/SpotifyExplorer/index.html)
+ + [Repository](https://github.com/luungoc2005/SpotifyExplorer)
 
 ### To-do list using jQuery and Local Storage
 This is essentially a copy of [this tutorial](https://www.sitepoint.com/building-list-jquery-local-storage/) as part of an assignment for an online course I attend. Below are some few modification I made
@@ -26,5 +26,5 @@ Known issues:
  
 I no longer maintain this project. However the repo can be found on my github.
 
-[Try it]({{ site.url }}/projects/To-do List/index.html)
-[Repository](https://github.com/luungoc2005/ToDoList-Update)
+ + [Try it]({{ site.url }}/projects/To-do List/index.html)
+ + [Repository](https://github.com/luungoc2005/ToDoList-Update)
