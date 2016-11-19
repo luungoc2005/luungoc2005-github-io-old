@@ -1,5 +1,5 @@
 ---
-title:  "My first blogpost!"
+title:  "My first blog post!"
 date: 2016-11-19 00:24:56 +7
 categories:
  - updates
