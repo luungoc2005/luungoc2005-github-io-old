@@ -1,5 +1,8 @@
 ---
 title:  "My first blogpost!"
+date: 2016-11-19 00:24:56 +7
+categories:
+ - updates
 ---
 
 Hello, and thank you for visiting my blog. Please take a minute to visit the [About](/about/) page if you are interested in me personally, or dive straight into my [Projects](/projects/) page.
