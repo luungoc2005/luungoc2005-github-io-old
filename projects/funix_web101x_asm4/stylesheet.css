@@ -1,0 +1,188 @@
+.page_content {
+	max-width: 1278px;
+	margin: auto;
+	position: relative;
+}
+
+#left_menu {
+	display: inline-block;
+}
+
+#navbar {
+	background-color: white;
+}
+
+#right_menu {
+	display: inline-block;
+	float: right;
+	margin-right: 40px;
+}
+
+li {
+	display: inline-block;
+	text-transform: uppercase;
+	padding: 10px;
+}
+
+li a {
+	text-decoration: none;
+	color: black;
+	font-family: sans-serif;
+}
+
+li a:hover {
+	color: #666666;
+}
+
+#header {
+	background-image: url('https://s3.amazonaws.com/codecademy-content/courses/ltp/img/lodging.png');
+	background-color: gray; /* fall-back when image cannot load */
+	background-repeat: no-repeat;
+	height: 500px;
+	color: white;
+	margin: auto;
+}
+
+#header h1 {
+	padding: 140px 0px 0px 30px;
+	margin: 0px;
+}
+
+#header p {
+	padding: 0px 0px 0px 30px;
+	margin: 0px;
+}
+
+#content {
+	background-color: #ebebe0;
+	padding-top: 0px;
+	font-family: sans-serif;
+}
+
+#content h1 {
+	margin: 0px;
+	padding: 30px 0px 0px 30px;
+}
+
+#content p {
+	padding-left: 30px;
+}
+
+.col {
+	padding-left: 30px;
+	max-width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: 10px;
+}
+
+#footer {
+	float: clear;
+	background-color: #f5f5ef;
+	font-family: sans-serif;
+	padding-bottom: 70px;
+}
+
+#footer h2 {
+	padding-top: 20px;
+	font-family: serif;
+}
+
+#footer a {
+	text-decoration: none;
+	color: #008fb3;
+}
+
+#footer a:hover {
+	color: #00ccff;
+}
+
+.row {
+	display: table;
+}
+
+@media only screen and (max-width: 992px) {
+	.page_content {
+		width: 100%;
+		margin: auto;
+		height: auto;
+		position: relative;
+	}
+	
+	.col {
+		padding-left: 40px;
+		max-width: 40%;
+		width: auto;
+		display: inline-block;
+		vertical-align: top;
+		padding-bottom: 10px;
+		float: left;
+		position: relative;
+	}
+	#header 
+	{
+		background-image: none;
+		background-color: white; /* fall-back when image cannot load */
+		height: auto;
+		color: initial;
+		font-family: sans-serif;
+		border-bottom: 1px black solid;
+		padding-bottom: 20px;
+	}
+	
+	#header h1 {
+		padding: 30px 0px 0px 30px;
+		margin: 0px;
+	}
+	
+	#content 
+	{
+		background-color: white;
+		padding-top: 0px;
+		font-family: sans-serif;
+	}
+	
+	#footer 
+	{
+		float: clear;
+		background-color: white;
+		font-family: sans-serif;
+	}
+	
+	#footer .col
+	{
+		max-width: 100%;
+	}
+	
+	#navbar
+	{
+		background-color: #4e5663;
+	}
+	
+	li a {
+		text-decoration: none;
+		color: white;
+		font-family: sans-serif;
+	}
+
+	li a:hover {
+		color: #e2e2e2;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#header 
+	{
+		border-bottom: 0px;
+	}
+	
+	.col
+	{
+		max-width: 100%;
+	}
+	
+	#navbar
+	{
+		font-size: 0.8em;
+	}
+}
