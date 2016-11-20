@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login - Assignment 1</title>
+</head>
+<body>
+<h1>Login</h1>
+<p>Username <input type="text" id="txName" />
+<span style="display: none; color: red;" id="lbName">Missing Email!</span>
+</p>
+<p>Password <input type="password" id="txPass" />
+<span style="display: none; color: red;" id="lbPass">Missing Password!</span>
+<span style="display: none; color: red;" id="lbPass2">Password is too short, please input at least 6 characters!</span>
+</p>
+<p><input type="button" id="btnLogin" value="Login" onclick="onLogin()"/></p>
+<script>
+<!--
+var onLogin = function () {
+	document.getElementById("lbName").style.display=(document.getElementById("txName").value == "")?"initial":"none";
+	var passInput=document.getElementById("txPass").value;
+	document.getElementById("lbPass").style.display=(passInput == "")?"initial":"none";
+	document.getElementById("lbPass2").style.display=(passInput != "" && passInput.length<6)?"initial":"none";
+}
+-->
+</script>
+</body>
+</html>
