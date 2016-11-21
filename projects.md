@@ -6,8 +6,10 @@ layout: single
 
 ### Spotify Explorer
 An artist explorer app for Spotify, making use of Spotify Web API for search, suggestions and track samples.
+A good way to pass a few minutes. I myself found a few favorite tracks while testing it.
 
 First working version on 19 November, 2016
+Lasted update 22 November, 2016
 
  + [Try it]({{ site.url }}/projects/SpotifyExplorer/index.html)
  + [Repository](https://github.com/luungoc2005/SpotifyExplorer)
