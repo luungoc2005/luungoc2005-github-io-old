@@ -149,6 +149,28 @@
 		$("." + markups.item_tracks).empty();
 	}
 	
+	controls.togglePlay = function(action, uri) {
+		// action can be play or pause
+		var player = $("#" + markups.audio_player);
+		
+		switch (action)
+		{
+			case "play":
+				player.animate({volume: 0}, 500, function() {
+					player.attr("src",uri);
+					player.trigger("play"); //play the new track
+					player.animate({volume: 1}, 800); //lower volume, then change tracks
+				});
+				break;
+			case "pause":
+				player.animate({volume: 0}, 800, function() {
+					player.trigger("pause");
+				});
+				break;
+			default:
+		}
+	}
+	
 	controls.addTopTrack = function(params) {
 		var item = $("<li />", {
 			"class":"item-indi-track"
@@ -176,9 +198,8 @@
 		
 		btn.on("click", function() {
 			var icon = $(this).find("span");
-			if (icon.hasClass("glyphicon-play")) { //is not playing		
-				$("#" + markups.audio_player).attr("src",$(this).attr("data-location"));
-				$("#" + markups.audio_player).trigger("play");
+			if (icon.hasClass("glyphicon-play")) { //is not playing
+				controls.togglePlay("play", $(this).attr("data-location"));
 				
 				// change class of all remaining buttons
 				$(".track-btn span").removeClass("glyphicon-pause");
@@ -189,7 +210,7 @@
 				icon.addClass("glyphicon-pause");
 			}
 			else {				
-				$("#" + markups.audio_player).trigger("pause");
+				controls.togglePlay("pause");
 				icon.removeClass("glyphicon-pause");
 				icon.addClass("glyphicon-play");
 			}
@@ -206,5 +227,17 @@
 				spotify.pushRelatedArtist(this.id.replace(markups.next_artist,""));
 			});
 		}
+		//auto fade out for audio
+		var player = $("#" + markups.audio_player);
+		player.on("timeupdate", function() {
+			// console.log("Remaining: " + Math.round(player.prop("duration") - player.prop("currentTime"),2));
+			// HTML5 specs state audio time update fires at intervals of 15-250ms, must account for this deviation by 0.8+0.25
+			if (player.prop("duration") - player.prop("currentTime") <= 1.05) {
+				controls.togglePlay("pause");
+				
+				$(".track-btn span").removeClass("glyphicon-pause");
+				$(".track-btn span").addClass("glyphicon-play");
+			}
+		});
 	}
 })(global, controls, jQuery)
