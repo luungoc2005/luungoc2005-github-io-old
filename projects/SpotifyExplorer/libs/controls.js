@@ -28,7 +28,7 @@
 		var target = $("#" + markups.current_artist);
 		
 		target.find(".item_url").attr("href", url);
-		target.find(".item_img").attr("src", img);
+		target.find(".current_img").attr("src", img);
 		target.find(".item_name").text(name + " ");
 		target.find(".item_genres").text("Genres: " + capitalize(genres));
 		target.find(".item_followers").text(followers + " followers");
@@ -142,6 +142,58 @@
 		if (!event.target.matches("#" + markups.search_box)) {
 			controls.hideSearch();
 		}
+	}
+	
+	//Top tracks - related functions
+	controls.clearTopTracks = function() {
+		$("." + markups.item_tracks).empty();
+	}
+	
+	controls.addTopTrack = function(params) {
+		var item = $("<li />", {
+			"class":"item-indi-track"
+		}).appendTo($("." + markups.item_tracks));
+		
+		var wrapper = $("<div />", {			
+		}).appendTo(item);
+		
+		var btn = $("<div />", {
+			"class":"track-btn",
+			"data-location":params["preview_url"]
+		}).appendTo(wrapper);
+		
+		$("<span />", {
+			"class":"glyphicon glyphicon-play",
+			"aria-hidden":"true"
+		}).appendTo(btn);
+		
+		$("<a />", {
+			"href":"#",
+			"text":params["name"],
+		}).appendTo(wrapper);
+		
+		// audio preview controls
+		
+		btn.on("click", function() {
+			var icon = $(this).find("span");
+			if (icon.hasClass("glyphicon-play")) { //is not playing		
+				$("#" + markups.audio_player).attr("src",$(this).attr("data-location"));
+				$("#" + markups.audio_player).trigger("play");
+				
+				// change class of all remaining buttons
+				$(".track-btn span").removeClass("glyphicon-pause");
+				$(".track-btn span").addClass("glyphicon-play");
+				
+				// change class of current button
+				icon.removeClass("glyphicon-play");
+				icon.addClass("glyphicon-pause");
+			}
+			else {				
+				$("#" + markups.audio_player).trigger("pause");
+				icon.removeClass("glyphicon-pause");
+				icon.addClass("glyphicon-play");
+			}
+		});
 	}
 	
 	controls.init = function() {

@@ -1,6 +1,6 @@
 (function (global, controls, spotify, $) {
 	var spotifyUri = {
-		search: "https://api.spotify.com/v1/search?q={query}&type=artist",
+		search: "https://api.spotify.com/v1/search?",
 		artist: "https://api.spotify.com/v1/artists/", // followed by Id of artist
 		top_tracks: "https://api.spotify.com/v1/artists/{id}/top-tracks?country=US",
 		related_artists: "https://api.spotify.com/v1/artists/{id}/related-artists"
@@ -14,6 +14,19 @@
 	
 	function getSmallestImage(value) {
 		return (value == null || value.length == 0)?"":value[value.length - 1]["url"];
+	}
+	
+	function getMidImage(value) {
+		if (!value || value.length == 0) {
+			return ""
+		}
+		else if (value.length == 1) {
+			return value[0]["url"];
+		}
+		else
+		{
+			return value[value.length - 2]["url"];
+		}
 	}
 	
 	function findHistory(uri) {
@@ -36,9 +49,13 @@
 			if (prevQuery == query && currentResults != null && currentResults.length > 0) {
 				controls.showSearch();
 			}
-			else {			
-				$.getJSON(spotifyUri.search.replace("{query}", encodeURIComponent(query)) + "&limit=" + defaults.max_results, 
-				function(result) {
+			else { 
+				var params = {
+					"query":query,
+					"type":"artist",
+					"limit":defaults.max_results
+				};
+				$.getJSON(spotifyUri.search + $.param(params), function(result) {
 					if (result == null) return;					
 					controls.clearResultBox();					
 					currentResults = result["artists"]["items"] || currentResults;					
@@ -52,15 +69,22 @@
 	spotify.getTopTracks = function (artistID) {
 		if (artistID == null || artistID == "") return;
 		
-		$.getJSON(spotifyUri.top_tracks.replace("{id}", artistId),
+		$.getJSON(spotifyUri.top_tracks.replace("{id}", artistID),
 			function(result) {
-				topTracks = (result == null)?null:result["tracks"];
+				if (result == null || result["tracks"].length == 0) {
+					topTracks = [];
+				}
+				else {
+					topTracks = result["tracks"];
+					spotify.addTopTracks();
+				}
 			});
 	}
 	
 	spotify.getRelatedArtists = function (artistID) {		
 		if (artistID == null || artistID == "") return;
 		
+		controls.adjustRelated(0); //temporary measure. TODO: animations/load notifier?
 		$.getJSON(spotifyUri.related_artists.replace("{id}", artistID),
 			function(result) {
 				if (result == null || result["artists"].length == 0) {
@@ -74,8 +98,9 @@
 	}
 	
 	spotify.addTopTracks = function() {
-		$.each(currentResults, function(index, value) {
-			
+		controls.clearTopTracks();
+		$.each(topTracks, function(index, value) {
+			controls.addTopTrack(value);
 		});
 	}
 	
@@ -120,7 +145,7 @@
 			value["name"], 
 			value["genres"].toString(), 
 			value["popularity"], 
-			getSmallestImage(value["images"]), 
+			getMidImage(value["images"]), 
 			value["external_urls"]["spotify"],
 			value["followers"]["total"]);
 			
@@ -138,6 +163,7 @@
 		}
 			
 		//find related artists
+		spotify.getTopTracks(value["uri"].replace("spotify:artist:",""));
 		spotify.getRelatedArtists(value["uri"].replace("spotify:artist:",""));
 	}
 	

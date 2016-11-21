@@ -16,6 +16,8 @@ var controls = controls || {};
 		current_artist: "current-artist",
 		next_artist: "next-artist-",
 		prev_artist: "prev-artist",
-		hide_info: "hiddenInfo"
+		hide_info: "hiddenInfo",
+		item_tracks: "item-tracks",
+		audio_player: "player"
 	}
 })(global, jQuery)

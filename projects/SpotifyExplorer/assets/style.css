@@ -87,3 +87,16 @@
 	padding: 0px;
 	background-color: #e7e7e7;
 }
+
+.item-tracks {
+	list-style-type:none;
+	padding-left: 20px;
+}
+
+.item-tracks div {
+	display: inline-block;
+}
+
+.item-tracks a {
+	margin-left: 5px;
+}
