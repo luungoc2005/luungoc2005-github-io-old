@@ -11,24 +11,7 @@
 	var relatedArtists = [];
 	var topTracks = [];
 	var prevQuery = "";
-	
-	function getSmallestImage(value) {
-		return (value == null || value.length == 0)?"":value[value.length - 1]["url"];
-	}
-	
-	function getMidImage(value) {
-		if (!value || value.length == 0) {
-			return ""
-		}
-		else if (value.length == 1) {
-			return value[0]["url"];
-		}
-		else
-		{
-			return value[value.length - 2]["url"];
-		}
-	}
-	
+		
 	function findHistory(uri) {
 		if (selectedArtists == null || selectedArtists.length == 0) return false;
 		
@@ -111,13 +94,9 @@
 			return !findHistory(value["uri"]);
 		});
 		$.each(relatedArtists, function(index, value) {
-			controls.updateArtistSmall($("#" + markups.next_artist + index), 
-				value["name"], 
-				value["genres"].toString(), 
-				value["popularity"], 
-				getSmallestImage(value["images"]));
+			controls.updateArtistSmall($("#" + markups.next_artist + index), value);
 				count++;
-			if (count > 2) return false;
+			if (count > 2) return false; //max-related
 		});
 		// console.log(relatedArtists.length);
 		controls.adjustRelated(count);
@@ -131,32 +110,17 @@
 			controls.showSearch();
 			$.each(currentResults, function(index, value) {
 				//if (index + 1 > defaults.max_results) return false;
-				controls.addSearchResultItem(index, 
-					value["name"], 
-					value["genres"].toString(), 
-					value["popularity"], 
-					getSmallestImage(value["images"]));
+				controls.addSearchResultItem(index, value);
 			});
 		}
 	}
 	
 	spotify.setCurrentArtist = function(value) {
-		controls.updateCurrentArtist(
-			value["name"], 
-			value["genres"].toString(), 
-			value["popularity"], 
-			getMidImage(value["images"]), 
-			value["external_urls"]["spotify"],
-			value["followers"]["total"]);
+		controls.updateCurrentArtist(value);
 			
 		if (selectedArtists.length > 1) { //set previous artist
 			$("#" + markups.prev_artist).css("visibility", "visible");
-			var prev = selectedArtists[selectedArtists.length - 2];
-			controls.updateArtistSmall($("#" + markups.prev_artist), 
-				prev["name"], 
-				prev["genres"].toString(), 
-				prev["popularity"], 
-				getSmallestImage(prev["images"]));
+			controls.updateArtistSmall($("#" + markups.prev_artist), selectedArtists[selectedArtists.length - 2]);
 		}
 		else {
 			$("#" + markups.prev_artist).css("visibility", "hidden");

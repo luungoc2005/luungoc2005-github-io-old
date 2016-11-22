@@ -4,6 +4,23 @@
 		return (!textToFix)?"N/A":textToFix.replace(/\b\w/g, function(l) { return l.toUpperCase()});
 	}
 	
+	function getSmallestImage(value) {
+		return (value == null || value.length == 0)?"":value[value.length - 1]["url"];
+	}
+	
+	function getMidImage(value) {
+		if (!value || value.length == 0) {
+			return ""
+		}
+		else if (value.length == 1) {
+			return value[0]["url"];
+		}
+		else
+		{
+			return value[value.length - 2]["url"];
+		}
+	}
+	
 	//Top tracks - related functions
 	controls.clearTopTracks = function() {
 		$("." + markups.item_tracks).empty();
@@ -55,36 +72,37 @@
 		}
 	}
 	
-	controls.updateCurrentArtist = function(name, genres, pop, img, url, followers) {
+	controls.updateCurrentArtist = function(params) {
 		controls.togglePlay("pause");
 		
 		var target = $("#" + markups.current_artist);
 		
-		target.find(".item_url").attr("href", url);
-		target.find(".current_img").attr("src", img);
-		target.find(".item_name").text(name + " ");
-		target.find(".item_genres").text("Genres: " + capitalize(genres));
-		target.find(".item_followers").text(followers + " followers");
+		target.find(".item_url").attr("href", params["external_urls"]["spotify"]);
+		target.find(".current_img").attr("src", getMidImage(params["images"]));
+		target.find(".item_name").text(params["name"] + " ");
+		target.find(".item_genres").text("Genres: " + capitalize(params["genres"].toString()));
+		target.find(".item_followers").text(params["followers"]["total"] + " followers");
 		
-		controls.makeStar(target.find("#artist-pop"), pop);
+		controls.makeStar(target.find("#artist-pop"), params["popularity"]);
 		
 		target.css("visibility", "visible");		
 	}
 	
-	controls.updateArtistSmall = function(target, name, genres, pop, img) {
-		target.find(".item_img").attr("src", img);
-		target.find(".item_name").text(name + " ");
-		target.find(".item_genres").text(capitalize(genres));
-		controls.makeStar(target.find("#artist-pop"), pop);
+	controls.updateArtistSmall = function(target, params) {
+		if (params) {
+			target.find(".item_img").attr("src", getSmallestImage(params["images"]));
+			target.find(".item_name").text(params["name"] + " ");
+			target.find(".item_genres").text(capitalize(params["genres"].toString()));
+			controls.makeStar(target.find("#artist-pop"), params["popularity"]);
+		}
 	}
 	
-	controls.addSearchResultItem = function(id, name, genres, pop, img) {	
-		if (name != null && name != "") {
+	controls.addSearchResultItem = function(id, params) {	
+		if (params) {
 			var list = $("<li />").appendTo($("#" + markups.results_box));
 			var item = $("<a />", {
 				"class": markups.search_item, // + " list-group-item",
 				"id": markups.search_id + id,
-				"data": markups.search_id + id,
 				"href": "#"
 				}).appendTo(list);
 			
@@ -92,7 +110,7 @@
 				"class": "row"
 				}).appendTo(item);
 			
-			//note to self: somehow "data": id attribute will cause this to not work
+			//note to self: don't use "data": id attribute - will cause this to not work. Should use data-id instead as per specs
 			
 			$("<img />", { //img
 				"class": "item_img col-md-5 pull-left item_img",
@@ -116,11 +134,10 @@
 			}).appendTo(head);
 			
 			$("<div />", { //genres div
-				"text": capitalize(genres),
 				"class": "item_genres",
 				}).appendTo(content);
 				
-			controls.updateArtistSmall(item, name, genres, pop, img);
+			controls.updateArtistSmall(item, params);
 									
 			item.on("click", function() {
 				spotify.gotoResult(id);
