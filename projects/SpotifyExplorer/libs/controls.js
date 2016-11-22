@@ -4,6 +4,37 @@
 		return (!textToFix)?"N/A":textToFix.replace(/\b\w/g, function(l) { return l.toUpperCase()});
 	}
 	
+	//Top tracks - related functions
+	controls.clearTopTracks = function() {
+		$("." + markups.item_tracks).empty();
+	}
+	
+	controls.togglePlay = function(action, uri) {
+		// action can be play or pause
+		var player = $("#" + markups.audio_player);
+		
+		switch (action)
+		{
+			case "play":
+				player.stop(true).animate({volume: 0}, 500, function() { //lower volume, then change tracks
+					player.trigger("pause");				
+					player.attr("src",uri);
+					
+					player.on("loadeddata", function () {
+						player.trigger("play"); //play the new track
+						player.animate({volume: 1}, 800);
+					});
+				});
+				break;
+			case "pause":
+				player.stop(true).animate({volume: 0}, 800, function() {
+					player.trigger("pause");
+				});
+				break;
+			default:
+		}
+	}
+	
 	controls.makeStar = function(target, popularity) { //popularity in base 100
 		var pop = Math.round(popularity / 20); //converts to base 5
 		// var target = $("#" + parentName);
@@ -25,6 +56,8 @@
 	}
 	
 	controls.updateCurrentArtist = function(name, genres, pop, img, url, followers) {
+		controls.togglePlay("pause");
+		
 		var target = $("#" + markups.current_artist);
 		
 		target.find(".item_url").attr("href", url);
@@ -35,7 +68,7 @@
 		
 		controls.makeStar(target.find("#artist-pop"), pop);
 		
-		target.css("visibility", "visible");
+		target.css("visibility", "visible");		
 	}
 	
 	controls.updateArtistSmall = function(target, name, genres, pop, img) {
@@ -141,33 +174,6 @@
 	window.onclick = function(event) {
 		if (!event.target.matches("#" + markups.search_box)) {
 			controls.hideSearch();
-		}
-	}
-	
-	//Top tracks - related functions
-	controls.clearTopTracks = function() {
-		$("." + markups.item_tracks).empty();
-	}
-	
-	controls.togglePlay = function(action, uri) {
-		// action can be play or pause
-		var player = $("#" + markups.audio_player);
-		
-		switch (action)
-		{
-			case "play":
-				player.animate({volume: 0}, 500, function() {
-					player.attr("src",uri);
-					player.trigger("play"); //play the new track
-					player.animate({volume: 1}, 800); //lower volume, then change tracks
-				});
-				break;
-			case "pause":
-				player.animate({volume: 0}, 800, function() {
-					player.trigger("pause");
-				});
-				break;
-			default:
 		}
 	}
 	
