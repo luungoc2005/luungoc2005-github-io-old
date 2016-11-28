@@ -32,8 +32,9 @@
 		
 		switch (action)
 		{
-			case "play":
-								player.trigger("pause");				
+			case "play":								
+				player.stop(true).animate({volume: 0}, 500, function() { //lower volume, then change tracks
+					player.trigger("pause");				
 					player.attr("src",uri);
 					player.trigger("load");
 					
@@ -41,8 +42,6 @@
 						player.trigger("play"); //play the new track
 						player.animate({volume: 1}, 800);
 					});
-				player.stop(true).animate({volume: 0}, 500, function() { //lower volume, then change tracks
-
 				});
 				break;
 			case "pause":
