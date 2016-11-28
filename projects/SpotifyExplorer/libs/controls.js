@@ -36,7 +36,7 @@
 				player.stop(true).animate({volume: 0}, 500, function() { //lower volume, then change tracks
 					player.trigger("pause");				
 					player.attr("src",uri);
-					player.load();
+					player.trigger("load");
 					
 					player.on("loadeddata", function () {
 						player.trigger("play"); //play the new track
