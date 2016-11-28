@@ -36,6 +36,7 @@
 				player.stop(true).animate({volume: 0}, 500, function() { //lower volume, then change tracks
 					player.trigger("pause");				
 					player.attr("src",uri);
+					player.load();
 					
 					player.on("loadeddata", function () {
 						player.trigger("play"); //play the new track
@@ -202,7 +203,7 @@
 		var wrapper = $("<div />", {			
 		}).appendTo(item);
 		
-		var btn = $("<a />", {
+		var btn = $("<div />", {
 			"class":"track-btn",
 			"data-location":params["preview_url"]
 		}).appendTo(wrapper);
