@@ -202,7 +202,7 @@
 		var wrapper = $("<div />", {			
 		}).appendTo(item);
 		
-		var btn = $("<div />", {
+		var btn = $("<a />", {
 			"class":"track-btn",
 			"data-location":params["preview_url"]
 		}).appendTo(wrapper);
