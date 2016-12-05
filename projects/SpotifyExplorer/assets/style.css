@@ -77,10 +77,6 @@
 	padding-left: 25px;
 }
 
-.jumbotron {
-	padding-bottom: 20px;
-}
-
 .item_img {
 	width: 64px;
 	height: 64px;
@@ -93,10 +89,15 @@
 	padding-left: 20px;
 }
 
-.item-tracks div {
+.item-indi-track div {
 	display: inline-block;
 }
 
 .item-tracks a {
 	margin-left: 5px;
+}
+
+.popover{
+    max-width: none;
+    width: 600px;
 }
