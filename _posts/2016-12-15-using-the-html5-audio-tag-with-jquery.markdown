@@ -13,7 +13,7 @@ To create a HTML5 web player using jQuery and audio tag. In fact, using jQuery i
 Due to my lack of project updates (because I am working on one, but it won't be finished for a while), I will try updating my blog by writing some tutorials every now and then. This is a problem that came up while I was making the [Spotify Explorer app]({{ site.url }}/projects/SpotifyExplorer), which you can check out with the link.
 
 ### Walkthrough
-#### Step 1: Preparing the HTML file
+**Step 1:** Preparing the HTML file
 You would start out with a HTML page, below is the one I usually use. You can either use jQuery on Google CDN or download it and refer locally.
 
 {% highlight html linenos %}
@@ -29,4 +29,15 @@ You would start out with a HTML page, below is the one I usually use. You can ei
 </html>
 {% endhighlight %}
 
-Coming soon
+You then add the HTML5-only `<audio>` tag inside your HTML's `<body>`
+
+{% highlight html linenos %}
+<audio id="player" type="audio/mp3">Your browser does not support HTML5 audio</audio>
+{% endhighlight %}
+
+Note that the content inside the `<audio></audio>` tag would be the content displayed when the user's browser does not support the audio tag. As for which browser supports HTML5, you can find by [this handy link](http://caniuse.com/#feat=audio)
+
+Finally, a `<script></script>` tag should be added *after* the jQuery reference for your javascript code. This will be covered in the next section.
+
+**Step 2:** The javascript for playing audio
+*Coming soon*
