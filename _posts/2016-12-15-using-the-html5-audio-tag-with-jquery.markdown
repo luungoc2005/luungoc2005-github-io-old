@@ -1,5 +1,5 @@
 ---
-title:  "Using the HTML5 audio tag with jQuery"
+title:  "Using the HTML5 audio tag with jQuery and Javascript"
 date: 2016-12-15 16:16:38 +7
 categories:
  - tutorials
@@ -32,10 +32,12 @@ You would start out with a HTML page, below is the one I usually use. You can ei
 You then add the HTML5-only `<audio>` tag inside your HTML's `<body>`
 
 {% highlight html linenos %}
-<audio id="player" type="audio/mp3">Your browser does not support HTML5 audio</audio>
+<audio id="player">Your browser does not support HTML5 audio</audio>
 {% endhighlight %}
 
 Note that the content inside the `<audio></audio>` tag would be the content displayed when the user's browser does not support the audio tag. As for which browser supports HTML5, you can find by [this handy link](http://caniuse.com/#feat=audio)
+
+Here the id is set as `"player"`. We would later use this in the jQuery code to reference the tag by the css selector `#player`.
 
 Finally, a `<script></script>` tag should be added *after* the jQuery reference for your javascript code. This will be covered in the next section.
 
