@@ -65,21 +65,22 @@ We can now implement a simple playlist for our mp3 player by having the followin
 
 {% highlight html linenos %}
 <ui id="player-list">
-    <li class="player-uri" data-src="http://techslides.com/demos/samples/sample.mp3">Sample audio 1</li>
-    <li class="player-uri" data-src="">Sample audio 2</li>
+    <li><a href="#" class="player-uri" data-src="http://techslides.com/demos/samples/sample.mp3">Sample audio 1</a></li>
+    <li><a href="#" class="player-uri" data-src="">Sample audio 2</a></li>
 </ui>
 {% endhighlight %}
 
 This will be sufficient to test our audio player. We can add the code to programmatically expand this play list later. For now, put this javascript code into the `<script></script>` tag to see if the audio tag is working as intended:
 
 {% highlight javascript linenos %}
-function onListItemClick(element) {
+function onListItemClick(element)
+{
     $("#player").attr("src", $(element).data("src"));
     $("#player").trigger("load");
     $("#player").trigger("play");
 }
 
-$document.ready(function ()
+$(document).ready(function ()
 {
     $(".player-uri").on("click", function ()
     {
@@ -88,8 +89,8 @@ $document.ready(function ()
 });
 {% endhighlight %}
 
+Remember that this script has to be placed under the reference to jQuery, otherwise you will just receive a null reference exception.
+
 Here we are getting the list item's attribute `data-src`, but jQuery's `data()` method provides a more abstract and standards-compliant alternative to `attr("data-src")`. The `load()` method call is optional, it only pre-loads the audio fully, but calling `play()` directly is also fine - the audio file will buffer as it plays in this case.
-
-
 
 *Coming soon*
