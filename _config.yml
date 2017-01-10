@@ -29,13 +29,19 @@ github_username:  luungoc2005
 # Settings for analytics helper
 # Set 'provider' to the analytics provider you want to use.
 # Set 'provider' to false to turn analytics off globally.
-#        
+#
 analytics :
   provider : google
-  google : 
+  google :
       tracking_id : 'UA-87659525-1'
   getclicky :
     site_id :
+
+# Comments
+comments:
+  provider : 'disqus'
+  disqus :
+    shortname : 'luungoc2005'
 # Build settings
 markdown: kramdown
 # theme: minima
@@ -46,7 +52,7 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
   - jemoji
-  
+
  # Reading Files
 include:
   - .htaccess
@@ -89,6 +95,14 @@ lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
+# Author profile
+author:
+  name: 'Ngoc Nguyen'
+  avatar: '/assets/images/avatar.png'
+  bio: 'Coffee addict, Tech enthusiast and Amateur artist.'
+  location: 'Vietnam'
+  email: 'luungoc2005@gmail.com'
+  github: 'luungoc2005'
 
 # Markdown Processing
 kramdown:
@@ -113,7 +127,7 @@ permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  
+
 defaults:
   -
     scope:
