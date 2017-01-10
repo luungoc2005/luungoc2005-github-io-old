@@ -1,6 +1,7 @@
 ---
 title:  "Popover for track information - Spotify Explorer"
 date: 2016-12-05 10:51:30 +7
+comments: true
 categories:
  - updates
  - projects

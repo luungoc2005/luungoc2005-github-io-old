@@ -1,6 +1,7 @@
 ---
 title:  "Older projects"
 date: 2016-11-19 16:21:24 +7
+comments: true
 categories:
  - updates
 ---

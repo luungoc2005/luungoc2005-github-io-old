@@ -1,6 +1,7 @@
 ---
 title:  "Using the HTML5 audio tag with jQuery and Javascript"
 date: 2016-12-15 16:16:38 +7
+comments: true
 categories:
  - tutorials
  - jquery

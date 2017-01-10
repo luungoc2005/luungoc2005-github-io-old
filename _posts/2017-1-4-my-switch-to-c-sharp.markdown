@@ -1,6 +1,7 @@
 ---
 title:  "A bit of history: My switch to C#"
 date: 2017-01-04 11:00:33 +7
+comments: true
 categories:
 - misc
 ---

@@ -1,6 +1,7 @@
 ---
 title:  "Spotify Explorer completed!"
 date: 2016-11-22 03:07:35 +7
+comments: true
 categories:
  - updates
  - projects

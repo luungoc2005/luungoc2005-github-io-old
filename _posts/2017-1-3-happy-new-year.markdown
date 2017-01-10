@@ -1,6 +1,7 @@
 ---
 title:  "Happy New Year!"
 date: 2017-01-03 17:18:54 +7
+comments: true
 categories:
 - misc
 ---
