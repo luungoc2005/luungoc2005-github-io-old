@@ -39,4 +39,32 @@ Nevertheless, this class serves its purpose as long as I get the length calculat
 
 NAudio also offers `ToSampleProvider()` and `ToMono()` extension methods (and various conversion classes, for that matter). However those also quickly fail my purpose. Please, just do one thing with your methods, and do not change my WaveFormat for whatever reasons.
 
+In the end, after wasting a ton of time with AudioFileReader class shenanigans, I went with Mp3FileReader class, which served a Pcm 16-bit (e.g short) stream. Combining it into a mono stream was a matter of averaging each pair of samples, basically:
+
+{% highlight csharp linenos %}
+    var buffer = new byte[65536];
+    var destBuffer = new byte[32768]; // half of source buffer
+    var wrapper = new WaveBuffer(buffer);
+    var destWrapper = new WaveBuffer(destBuffer);
+    var count = 0;
+    using (var reader = new Mp3FileReader(fileName))
+    {
+        System.Diagnostics.Debug.WriteLine($"Analyzing {fileName} - {reader.WaveFormat.ToString()}");
+
+        while ((length = reader.Read(buffer, 0, buffer.Length)) > 0)
+        {
+            for (int i = 0; i < length / 2; i += 2)
+            {
+                double outSample = wrapper.ShortBuffer[i] * 0.5 + wrapper.ShortBuffer[i + 1] * 0.5;
+                outSample = Math.Max(outSample, float.MinValue);
+                outSample = Math.Min(outSample, float.MaxValue);
+                destWrapper.FloatBuffer[count] = outSample;
+                count++;
+            }
+            memStream.Write(destWrapper.ByteBuffer, 0, length / 2);
+        }
+        return GetFingerprint(memStream);
+    }
+{% endhighlight %}
+
 *Coming soon...ish*
