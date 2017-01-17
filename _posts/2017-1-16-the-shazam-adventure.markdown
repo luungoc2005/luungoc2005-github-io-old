@@ -149,6 +149,7 @@ Best match: Adventure Of A Lifetime.mp3
 ### Looking forward
 
 I just now added the following items to my to-do list for the holidays to come:
-- Testing a different fingerprinting method for better accuracy
-- Re-implement this also in Javascript. Reason: I want to make an Electron app because nothing beats D3.js when it comes to visualization (WPF libraries wouldn't come close). However audio format and processing libraries for Javascript are few and far between (probably due to performance reasons). This will be a giant pain to deal with.
-- (Probably) clean up the experimental code a bit and release it if there is any demand.
+
+* Testing a different fingerprinting method for better accuracy
+* Re-implement this also in Javascript. Reason: I want to make an Electron app because nothing beats D3.js when it comes to visualization (WPF libraries wouldn't come close). However audio format and processing libraries for Javascript are few and far between (probably due to performance reasons). This will be a giant pain to deal with.
+* (Probably) clean up the experimental code a bit and release it if there is any demand.
