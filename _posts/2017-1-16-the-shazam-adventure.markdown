@@ -35,7 +35,7 @@ Naturally I went for the `AudioFileReader` class first, only to stumble upon var
             numberOfBytes = 0;
         }
 {% endhighlight %}
-- *yes, it would seem I do*
+*yes, it would seem I do*
 
 Nevertheless, this class serves its purpose as long as I get the length calculations right. In a moment of frustration I even swapped it out for `Buffer.BlockCopy()`, but then again tested and found this class working perfectly. Which is nice, because it's almost as fast as using pointers.
 
@@ -72,7 +72,7 @@ In the end, after wasting a ton of time with AudioFileReader class shenanigans, 
 ### NAudio quirks #2: The fast fourier transform
 
 NAudio readily provides the FFT functions `NAudio.Dsp.FastFourierTransform.FFT(bool forward, int m, NAudio.Dsp.Complex[] data)`, although one would have to browze through the source code to understand what parameter m means : `int m = (int)Math.Log(windowLength, 2.0);`. Then I can quickly generate a spectrum image from that data.
-Turns out, again, things aren't so straightforward, NAudio's FFT uses a custom complex type with floats, which has X & Y properties for the real and imaginary parts, without any properties or constructor (gee, would it hurt you to...?). I started making a custom `CalculateMagnitude` function for it (which was basically Math.Sqrt(X*X + Y*Y)).
+Turns out, again, things aren't so straightforward, NAudio's FFT uses a custom complex type with floats, which has X & Y properties for the real and imaginary parts, without any properties or constructor (gee, would it hurt you to...?). I started making a custom `CalculateMagnitude` function for it (which was basically Math.Sqrt(X x X + Y x Y)).
 
 However my spectrum image was still blank. Turns out, NAudio also [scales the FFT result by 1/n](https://www.codeproject.com/Articles/1095473/Comparison-of-FFT-implementations-for-NET). Not wanting to waste more time on these shenanigans, I decided to just quickly threw in the trustworthy Accord.Net FFT - which also uses the native System.Numerics Complex type and has no scaling. My DrawSpectrum function finally could return a colorful image - same one as in the Java article.
 
@@ -150,3 +150,4 @@ Best match: Adventure Of A Lifetime.mp3
 I just now added the following items to my to-do list for the holidays to come:
 - Testing a different fingerprinting method for better accuracy
 - Re-implement this also in Javascript. Reason: I want to make an Electron app because nothing beats D3.js when it comes to visualization (WPF libraries wouldn't come close). However audio format and processing libraries for Javascript are few and far between (probably due to performance reasons). This will be a giant pain to deal with.
+- (Probably) clean up the experimental code a bit and release it if there is any demand.
