@@ -130,6 +130,7 @@ For storage, because my own purpose is not to implement a fully-fledged identifi
 After running the application through my own songs library, I can see this working for over 95% of the songs (played on laptop speakers and recorded through the laptop mic). For the remaining 5%, a lot of experimenting was done with the fuzz factor (in the Java article) and ranges to no avail. As mentioned - I can experiment with a different method of getting the important frequencies for fingerprinting, or forego the tried method of using the FFT altogether - perhaps by using [this algorithm](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.607.97&rep=rep1&type=pdf) instead.
 
 Results from my own implementation below, after listening to the sample for 5 seconds:
+
 ```
 0: Match Adventure Of A Lifetime.mp3 19 times - Score: 905
 1: Match Hotel Room Service.mp3 6 times - Score: 1464
