@@ -67,4 +67,46 @@ In the end, after wasting a ton of time with AudioFileReader class shenanigans, 
     }
 {% endhighlight %}
 
+### NAudio quirks #2: The fast fourier transform
+NAudio readily provides the FFT functions `NAudio.Dsp.FastFourierTransform.FFT(bool forward, int m, NAudio.Dsp.Complex[] data)`, although one would have to browze through the source code to understand what parameter m means : `int m = (int)Math.Log(windowLength, 2.0);`. Then I can quickly generate a spectrum image from that data.
+Turns out, again, things aren't so straightforward, NAudio's FFT uses a custom complex type with floats, which has X & Y properties for the real and imaginary parts, without any properties or constructor (gee, would it hurt you to...?). I started making a custom `CalculateMagnitude` function for it (which was basically Math.Sqrt(X*X + Y*Y)). However my spectrum image was still blank. Turns out, NAudio also [scales the FFT result by 1/n](https://www.codeproject.com/Articles/1095473/Comparison-of-FFT-implementations-for-NET). Not wanting to waste more time on these shenanigans, I decided to just quickly threw in the trustworthy Accord.Net FFT - which also uses the native System.Numerics Complex type and has no scaling. My DrawSpectrum function finally could return a colorful image - same one as in the Java article.
+
+{% highlight csharp linenos %}
+private void DrawSpectrum(Complex[][] spectrumData, string fileName)
+{
+    if (spectrumData == null || !spectrumData.Any()) return;
+    var lengthY = 2;
+    var lengthX = 2;
+    var newBitmap = new Bitmap(
+        lengthX * spectrumData[0].Length / 2,
+        lengthY * spectrumData.Length,
+        System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+    using (var g = Graphics.FromImage(newBitmap))
+    {
+        g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+        g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+        //g.Clear(Color.Green);
+        for (int y = 0; y < SpectrumData.Length; y++)
+        {
+            if (SpectrumData[y] != null && SpectrumData[y].Any())
+            {
+                for (int x = 0; x < SpectrumData[y].Length / 2; x++)
+                {
+                    var abs = SpectrumData[y][x].Magnitude;
+                    var mag = Math.Log(SpectrumData[y][x].Magnitude + 1);
+                    g.FillRectangle(new SolidBrush(
+                            Color.FromArgb(0, Math.Min((int)mag * 10, 255), Math.Min((int)mag * 20, 255))),
+                        x * lengthX, y * lengthY, 1, lengthY);
+                }
+            }
+        }
+    }
+    newBitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Png);
+    newBitmap.Dispose();
+}
+{% endhighlight %}
+
+
 *Coming soon...ish*
