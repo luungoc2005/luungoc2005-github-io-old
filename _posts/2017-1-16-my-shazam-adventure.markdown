@@ -1,5 +1,5 @@
 ---
-title:  "The Shazam Adventure"
+title:  "My Shazam Adventure"
 date: 2017-01-16 14:37:51 +7
 comments: true
 categories:
@@ -117,9 +117,9 @@ private void DrawSpectrum(Complex[][] spectrumData, string fileName)
 
 ### Fingerprinting from the FFT result
 
-The original article does this by taking the maximum frequencies from the ranges 0 - 40, 40 - 80, 80 - 120 and 120 - 180 Hz. For my own implementation, I added the range 300 Hz. However, this unfortunately does not work for many songs, which I suspect is due to their having different frequency ranges.
+The original article does this by taking the maximum frequencies from the ranges 0 - 40, 40 - 80, 80 - 120 and 120 - 180 Hz. For my own implementation, I added the range 300 Hz. However, this unfortunately does not work for many songs, which I suspect is due to their having different frequency ranges. Basically I just took these ranges as-is, but apparently better ranges would be 0 - 10, 10 - 20, 20 - 40, 40 - 80, 80 - 160 and 160 - 511. I will need to experiment with these ranges also.
 
-An alternative would be to take a # number of peaks from the frequency ranges, preferably after applying a filtering function (high pass?). For the purpose of making the code work, I am willing to blindly follow the ranges method, I definitely should experiment more on this.
+An alternative would be to take a # number of peaks from the frequency ranges. For the purpose of making the code work, I am willing to blindly follow the ranges method, I definitely should experiment more on this.
 
 ### Lookup and identification results
 
@@ -150,6 +150,6 @@ Best match: Adventure Of A Lifetime.mp3
 
 I just now added the following items to my to-do list for the holidays to come:
 
-* Testing a different fingerprinting method for better accuracy
+* Testing a different fingerprinting method (perhaps non FFT-based) for better accuracy
 * Re-implement this also in Javascript. Reason: I want to make an Electron app because nothing beats D3.js when it comes to visualization (WPF libraries wouldn't come close). However audio format and processing libraries for Javascript are few and far between (probably due to performance reasons). This will be a giant pain to deal with.
 * (Probably) clean up the experimental code a bit and release it if there is any demand.
