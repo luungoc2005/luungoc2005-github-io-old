@@ -13,7 +13,7 @@ This could be a rather meaningless project, but it does have its use: to extend 
 
 This idea is actually stolen from [The Infinite Jukebox](http://labs.echonest.com/Uploader/index.html). I do use a completely different algorithm that does not involve beat detection, so the results will be vastly different. Mine does not identify similar beats, but rather long segments, so it tends to loop at the chorus and instrumental lead-ins. It also does not randomly jumps between parts, but rather just loops back when it reaches the later part of a similar segment.
 
-![The Song Extender]({{ site.url }}/assets/song-extender-screenshot.png)
+![The Song Extender]({{ site.url }}/assets/images/song-extender-screenshot.png)
 
 Again - this is one project that can be vastly improved/polished. Ideas that I have in mind (and totally possible) include:
 - Ability to save the analysis in JSON format for loading

@@ -3,6 +3,13 @@ title: Projects
 permalink: /projects/
 layout: single
 ---
+### Experimental Song Extender
+A song extender app - idea borrowed from [The Infinite Jukebox](http://labs.echonest.com/Uploader/index.html). Currently a proof-of-concept that could very potentially be polished/developed further if there is demand.
+
+First working version 30 Jan, 2017
+Last updated 30 Jan, 2017
+ + Try it - _Coming soon_
+ + [Repository](https://github.com/luungoc2005/song-extender-electron)
 
 ### Spotify Explorer
 An artist explorer app for Spotify, making use of Spotify Web API for search, suggestions and track samples.
