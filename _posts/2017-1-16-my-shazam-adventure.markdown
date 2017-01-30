@@ -7,8 +7,6 @@ categories:
  - dotnet
  - naudio
 ---
-### Introduction
-
 Shazam (or SoundHound) felt like magic when I first knew about it. I know a lot of people probably also felt that way. So imagine my joy and curiosity when I stumbled upon articles upon articles of how to recreate it. There are many creative uses for audio fingerprinting that is not limited just to identifying music. For the ideas that I have in mind though, I have to first hack together a Shazam replica to make sure what I understand about it is correct.
 
 From quick googling, it seems NAudio is the go-to framework for anything audio in .Net. While I do intend to reinvent the wheel for audio fingerprinting, I still have to read my own audio files for a start - and I don't intend to reinvent that. Armed with a greatly detailed, step-by-step explanation of the [Java implementation](http://royvanrijn.com/blog/2010/06/creating-shazam-in-java/). Instead of repeating that great blog post, I would only mention the differences for .Net in this post. In any case, I dove in head-first, not knowing that the resulting endeavor would haunt me for the next two whole days...
