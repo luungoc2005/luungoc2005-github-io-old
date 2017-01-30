@@ -9,7 +9,7 @@ A song extender app - idea borrowed from [The Infinite Jukebox](http://labs.echo
 First working version 30 Jan, 2017
 Last updated 30 Jan, 2017
 
- + Try it - _Coming soon_
+ + Try it: _Coming soon_
  + [Repository](https://github.com/luungoc2005/song-extender-electron)
 
 ### Spotify Explorer
