@@ -11,7 +11,9 @@ A song extender app - idea borrowed from [The Infinite Jukebox](http://labs.echo
 First working version 30 Jan, 2017
 Last updated 30 Jan, 2017
 
- + Try it (zip): [Windows x64](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-x64.zip) [Windows x86](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-ia32.zip)
+ + Try it (zip):
+     + [Windows x64](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-x64.zip)
+     + [Windows x86](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-ia32.zip)
  + [Repository](https://github.com/luungoc2005/song-extender-electron)
 
 ### Spotify Explorer
