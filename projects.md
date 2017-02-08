@@ -6,10 +6,12 @@ layout: single
 ### Experimental Song Extender
 A song extender app - idea borrowed from [The Infinite Jukebox](http://labs.echonest.com/Uploader/index.html). Currently a proof-of-concept that could very potentially be polished/developed further if there is demand.
 
+*Note:* Don't worry if the binaries show a warning when run - I did not code sign it.
+
 First working version 30 Jan, 2017
 Last updated 30 Jan, 2017
 
- + Try it: _Coming soon_
+ + Try it (zip): [Windows x64](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-x64.zip) [Windows x86](https://s3-ap-southeast-1.amazonaws.com/desktop-app-packages/song-extender/song-extender-win32-ia32.zip)
  + [Repository](https://github.com/luungoc2005/song-extender-electron)
 
 ### Spotify Explorer
