@@ -4,6 +4,7 @@ permalink: /projects/
 layout: single
 ---
 ### Experimental Song Extender
+![The Song Extender]({{ site.url }}/assets/images/song-extender-screenshot.png)
 A song extender app - idea borrowed from [The Infinite Jukebox](http://labs.echonest.com/Uploader/index.html). Currently a proof-of-concept that could very potentially be polished/developed further if there is demand.
 
 *Note:* Don't worry if the binaries show a warning when run - I did not code sign it.
@@ -17,6 +18,7 @@ Last updated 30 Jan, 2017
  + [Repository](https://github.com/luungoc2005/song-extender-electron)
 
 ### Spotify Explorer
+![Spotify Explorer]({{ site.url }}/assets/images/spotify-explorer-screenshot.png)
 An artist explorer app for Spotify, making use of Spotify Web API for search, suggestions and track samples.
 A good way to pass a few minutes. I myself found a few favorite tracks while testing it.
 Does not support sample track playing on mobile, thanks to my implementation of volume fading and mobile browsers being picky about loading tracks (*ugh..*). There are workarounds, but it will take a while to implement and I still lack the means to test on iOS.
