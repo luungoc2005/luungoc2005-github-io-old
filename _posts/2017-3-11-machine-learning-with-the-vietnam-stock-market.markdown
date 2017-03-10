@@ -27,6 +27,9 @@ I noticed also that data for the Vietnam stock market is also hard to get - spec
 
 For the second attempt, I setup an entire Django+React web app so I can later upload to AWS and see if I can trade with the strategy. This will also allow for automated data gathering - by virtue of the app running on a cloud service. The repository is [here](https://github.com/luungoc2005/stocksman-react). Be warned the app is not optimized - the main bottleneck lies in database querying. However a 1-2 seconds lag for every predict query doesn't seem entirely intolerable enough for me to try and address the issue.
 
+With this, I also set up a way for me to assess the performing stocks for the day - after the data is updated
+![The top stocks in Vietnam]({{ site.url }}/assets/images/stocks-top-performers.PNG)
+
 Python had a ton more libraries geared towards science and math, including more robust machine learning libraries. There is Theano, TensorFlow, scikit-learn and more. In the end I chose Scikit-learn for ease of use, because the task doesn't seem to require as much performance. It has a nice wrapper for all Regressors and Classifier classes, so I can worry less about which algorithm to choose and more about the model.
 
 ### Choosing the model
