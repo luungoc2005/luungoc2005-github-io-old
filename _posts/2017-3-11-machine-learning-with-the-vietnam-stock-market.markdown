@@ -55,13 +55,17 @@ For lack of understanding how individual algorithms work, I just picked a bunch 
 ### Results
 
 For classification (classifying whether a stock will have an increased price after T+3):
+
 `Accuracy = 0.61279896574`
+
 This is indeed bad, but it is actually better than a coin flip that the EMH says it should be. As long as the expected earnings are not lower than the expected loss, this might be a somewhat - promising result.
 
 For regression, the score is downright almost unusable:
+
 `Accuracy = 0.0211559133662`
 
 Combining the two results, I can obtain predictions like the following:
+
 ![Some predictions]({{ site.url }}/assets/images/predictions-11mar17.png)
 
 ### Going ahead
