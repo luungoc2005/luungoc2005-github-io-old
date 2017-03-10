@@ -1,6 +1,5 @@
 ---
 title:  "Machine Learning with the Vietnam Stock Market"
-2017-03-11 0:45:26
 date: 2017-03-11 0:45:36
 comments: true
 categories:
