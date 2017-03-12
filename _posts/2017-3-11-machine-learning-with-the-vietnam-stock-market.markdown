@@ -26,7 +26,7 @@ I noticed also that data for the Vietnam stock market is also hard to get - spec
 
 For the second attempt, I setup an entire Django+React web app so I can later upload to AWS and see if I can trade with the strategy. This will also allow for automated data gathering - by virtue of the app running on a cloud service. The repository is [here](https://github.com/luungoc2005/stocksman-react). Be warned the app is not optimized - the main bottleneck lies in database querying. However a 1-2 seconds lag for every predict query doesn't seem entirely intolerable enough for me to try and address the issue.
 
-With this, I also set up a way for me to assess the performing stocks for the day - after the data is updated
+With this, I also set up a way for me to assess the top performing stocks for the day - after the data is updated
 
 ![The top stocks in Vietnam]({{ site.url }}/assets/images/stocks-top-performers.PNG)
 
@@ -38,12 +38,25 @@ The model inputs: For this experiment, I chose the following inputs for my model
 - The Open price, Average price and Close price as well as daily variance (close price - open price)
 - Difference between the current Close price and the previous
 - The stock's performance indicators: Dividends, EPS (earning per share), Beta
-- The day of week (categorical variable)
-- Whether if there is a price shock (drop of > 10% from the previous day)
 - The 5-day moving average
+- The day of week (categorical variable) - This is indicated by many studies to potentially affect stock prices
+- Whether if there is a price shock (drop of > 10% from the previous day)
+
+A price shock (drop of > 10%) is considered an event. Buying a stock the immediate day after an event might be a possible winning trading strategy (because stock prices tend to increase several days after such shocks), therefore the app does have to include a way to quickly lists daily price drops, and possibly account that into the classification model:
+
+```
+Event: APP on 2017-03-09: 11000 -> 9900
+Event: BHT on 2017-03-09: 5000 -> 4500
+Event: CTB on 2017-03-09: 35200 -> 31800
+Event: DPC on 2017-03-09: 36000 -> 32400
+Event: HGM on 2017-03-09: 40300 -> 36400
+Event: HKB on 2017-03-09: 5000 -> 4500
+Event: STP on 2017-03-09: 7000 -> 6300
+```
 
 I should probably also experiment with these later:
 - Total trading volume (the high variance and large numbers causes difficulty in scaling), so I'm making do without it. Likely an important measure though.
+- The 20-day moving average (not currently included for performance reasons)
 - Number of search results for the stock's name
 - Category of the industry of the stock, and the average price indices of the category.
 - Standard deviation (volatility) of the stock.
