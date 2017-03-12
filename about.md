@@ -21,10 +21,12 @@ Front-End:
 - Others: HowlerJs, Google Charts, d3
 
 Back-End:
-- C# (.Net stack) with ASP.Net and Nancy, Owin, Entity Framework
+- C# (.Net stack) with ASP.Net, Nancy, Entity Framework
 - Python stack: Django with Django REST Framework, Celery
 - Elementary NodeJs and Java 8
 - Databases: MySQL
+
+Cloud services: Amazon Web Services
 
 Machine learning:
 Ngoc's bachelor background is in Finance and Accounting, hence he does possess basic econometrics/data research understanding. He does enjoy testing scientific theories using the following libraries:
