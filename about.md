@@ -32,11 +32,12 @@ Ngoc's bachelor background is in Finance and Accounting, hence he does possess b
 - C#: AForge or Accord.Net (which is a wrapper of sorts for AForge)
 - Python: Scikit-learn, Beautiful Soup (for data crawling)
 
+Computer vision and Audio: NAudio (.Net) and OpenCV basics
+
 Other skills:
 - Basics in Unity
 - Mobile app development: Windows Phone and Android Studio
-
-Computer vision and Audio: NAudio (.Net) and OpenCV basics
+- CMS: Wordpress, vBulletin, Joomla, Jekyll (used for this blog)
 
 ### Interests
 Other than work, He also has a passion for crafting handmade products, particularly Origami, and the Piano.
