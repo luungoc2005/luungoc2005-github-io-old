@@ -16,7 +16,7 @@ Front-End:
 - JavaScript (including ES6)
 - HTML5 and CSS3 including Less/Sass
 - Themes: React - Material UI and Bootstrap;
-- Component/Data Frameworks: React/Redux
+- Component/Data Frameworks: React/Redux, jQuery
 - Development and Deploying: Mocha, Webpack, Babel
 - Others: HowlerJs, Google Charts, d3
 
