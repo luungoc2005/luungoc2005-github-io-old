@@ -55,4 +55,27 @@ Note that we are no longer using Python's open(), instead supplying the file pat
 
 When using classifiers, even if the classifier does support `predict_proba()`, it is usually a good practice to use [CalibratedClassifierCV](http://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html) for a better confidence estimate. If the classifier does not support `predict_proba()`, `CalibratedClassifierCV` can still give decent probabilities. These probabilities can be tested using a loss function e.g [Briefer Score](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss). However it seems the estimates aren't entirely dependable either.
 
+The following code is applicable for the classification case where there are 2 labels: 0 and 1 (binary)
+
+{% highlight python linenos %}
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.metrics import brier_score_loss
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(inputs_scaled, outputs_cls, test_size=0.2)
+
+# Define your classifier named 'clf', for example using linear_model.LogisticRegression()
+...
+clf.fit(X_train, y_train)
+pcl = CalibratedClassifierCV(base_estimator=clf, method=pcl, cv=3)
+pcl_object.fit(X_train, y_train)
+pcl_predicted = pcl_object.predict_proba(X_test)[:, 1]
+
+pcl_loss = brier_score_loss(y_test, pcl_predicted, pos_label=1)
+print(pcl_loss)
+
+...
+pcl_object.predict_proba(sample)
+{% endhighlight %}
+
 *Coming soon*
