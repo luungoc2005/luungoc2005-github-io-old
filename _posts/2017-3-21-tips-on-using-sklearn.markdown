@@ -47,3 +47,8 @@ clf = joblib.load(cl_file)
 
 Note that we are no longer using Python's open(), instead supplying the file path directly to the functions. Also, the compression level is set to 3, as [joblib documentation recommends](https://pythonhosted.org/joblib/generated/joblib.dump.html). Usually, setting a higher compression level does not bring much gain and storage is cheap so performance is always welcome.
 
+### Using sklearn2pmml
+
+[Sklearn2PMML](https://github.com/jpmml/sklearn2pmml) is a tool for saving Sklearn models to [PMML](https://en.wikipedia.org/wiki/Predictive_Model_Markup_Language), which is potentially a good way to avoid the security concerns and compatibility issues. It does require more work, but it seems worth it in the long run.
+
+*Coming soon*
