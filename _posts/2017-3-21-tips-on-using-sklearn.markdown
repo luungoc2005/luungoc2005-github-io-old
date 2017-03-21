@@ -51,4 +51,8 @@ Note that we are no longer using Python's open(), instead supplying the file pat
 
 [Sklearn2PMML](https://github.com/jpmml/sklearn2pmml) is a tool for saving Sklearn models to [PMML](https://en.wikipedia.org/wiki/Predictive_Model_Markup_Language), which is potentially a good way to avoid the security concerns and compatibility issues. It does require more work, but it seems worth it in the long run.
 
+### 2. Using probability calibration
+
+When using classifiers, even if the classifier does support `predict_proba()`, it is usually a good practice to use [CalibratedClassifierCV](http://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html) for a better confidence estimate. If the classifier does not support `predict_proba()`, `CalibratedClassifierCV` can still give decent probabilities. These probabilities can be tested using a loss function e.g [Briefer Score](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss). However it seems the estimates aren't entirely dependable either.
+
 *Coming soon*
