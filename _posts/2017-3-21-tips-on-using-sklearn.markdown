@@ -98,13 +98,15 @@ for clf in CLASSIFIERS:
     clf.fit(X_train, y_train)
     accuracy = clf.score(X_test, y_test)
 
-    print('Model Accuracy: ' + str(accuracy))
+    print('Model Accuracy: %s', str(accuracy))
     clf_array.append(clf)
     accuracy_array.append(accuracy)
 
 # Getting the best model
 index_clf, value_clf = max(enumerate(accuracy_array), key=itemgetter(1))
-print('Best classification model: ' + str(index_clf) + ' - Accuracy: ' + str(value_clf))
+print('Best classification model: %s - Accuracy: %s', str(index_clf), str(value_clf))
 {% endhighlight %}
 
 Of course, this is just for testing purposes, such a brute-force approach should never be used in production. However, it is good for beginners who can test out model efficiency without having to understand the underlying math. I would personally recommend digging into certain models to understand how they work, e.g K-Neighbors and Neural Network are two easy starters.
+
+Happy science!
