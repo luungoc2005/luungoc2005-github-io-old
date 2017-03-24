@@ -24,7 +24,7 @@ Back-End:
 - C# (.Net stack) with ASP.Net, Nancy, Entity Framework
 - Python stack: Django with Django REST Framework, Celery
 - Elementary NodeJs and Java 8
-- Databases: MySQL
+- Databases: MySQL (plus Google BigQuery)
 
 Cloud services: Amazon Web Services
 
