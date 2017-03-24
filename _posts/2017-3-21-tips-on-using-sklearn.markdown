@@ -53,7 +53,7 @@ Note that we are no longer using Python's open(), instead supplying the file pat
 
 ### 2. Using probability calibration
 
-When using classifiers, even if the classifier does support `predict_proba()`, it is usually a good practice to use [CalibratedClassifierCV](http://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html) for a better confidence estimate. If the classifier does not support `predict_proba()`, `CalibratedClassifierCV` can still give decent probabilities. These probabilities can be tested using a loss function e.g [Briefer Score](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss). However it seems the estimates aren't entirely dependable either.
+When using classifiers, even if the classifier does support `predict_proba()`, it is usually a good practice to use [CalibratedClassifierCV](http://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html) for a better confidence estimate. If the classifier does not support `predict_proba()`, `CalibratedClassifierCV` can still give decent probabilities. These probabilities can be tested using a loss function e.g [Brier Score](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss). However it seems the estimates aren't entirely dependable either.
 
 The following code is applicable for the classification case where there are 2 labels: 0 and 1 (binary)
 
