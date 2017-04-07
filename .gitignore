@@ -1,3 +1,7 @@
 _site
 .sass-cache
 .jekyll-metadata
+
+# Dependency directories
+node_modules/
+jspm_packages/
