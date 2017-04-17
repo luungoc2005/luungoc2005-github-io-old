@@ -98,6 +98,6 @@ $(document).ready(function(){
   });
 
   // init parallax
-  $('#scene').parallax();
-  $('.scene').css('opacity', 1);
+//  $('#scene-content').parallax();
+//  $('#scene').css('opacity', 1);
 });
