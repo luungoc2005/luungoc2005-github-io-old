@@ -16,15 +16,18 @@ Front-End:
 - JavaScript (including ES6)
 - HTML5 and CSS3 including Less/Sass
 - Themes: React - Material UI and Bootstrap;
-- Component/Data Frameworks: React/Redux, jQuery
+- Component/Data Frameworks: React/Redux (Redux-thunk), jQuery
 - Development and Deploying: Mocha, Webpack, Babel
 - Others: HowlerJs, Google Charts, d3
 
 Back-End:
 - C# (.Net stack) with ASP.Net, Nancy, Entity Framework
-- Python stack: Django with Django REST Framework, Celery
+- Python stack: Django with Django REST Framework, Celery, Gunnicorn
 - Elementary NodeJs/Express and Java 8
-- Databases: MySQL (plus Google BigQuery)
+- Databases: MSSQL and MySQL (plus Google BigQuery)
+- Basic Docker knowledge.
+
+OSes: Windows and Ubuntu. Elementary MacOS
 
 Cloud services: Amazon Web Services
 
