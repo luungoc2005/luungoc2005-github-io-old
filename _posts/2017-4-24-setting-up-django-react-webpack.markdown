@@ -19,7 +19,7 @@ So if there is any issues during installation, it will, 90% of the time, be beca
 
 You will need
 
-1. Either Virtualenv or Anaconda. 
+1. Either Virtualenv or Anaconda.
 
 Virtualenv can be installed by
 `sudo easy_install pip && pip install virtualenv`
@@ -41,3 +41,27 @@ To activate the virtual environment for installing packages, type
 Anaconda: `source activate testapp`
 virtualenv: `source testapp/bin/activate`
 
+### Setting up a Django project
+
+After setting up Python and switching to the virtual environment created, you need to start a new Django project. The [official tutorial](https://www.djangoproject.com/start/) for Django is one of the most comprehensive tutorials for anything I have ever used. To sum up, in most cases, you would need to first install django (duh) with pip - installed in the above step:
+`pip install Django`
+
+Then, *cd* into the directory you would want to store your project (normally, I would store it in a parent directory of the **virtualenv** directory). Then run the following command
+`django-admin startproject mysite`
+
+Where **"mysite"** is the name of the website you would want to create. For further explanations including how to setup a database and templates etc. with Django, again - please refer to the [tutorials](https://docs.djangoproject.com/en/1.11/intro/tutorial01/). It also serves well for troubleshooting any problems you may have.
+
+Note: Since, after all, we aim to make a single-page web application using ReactJs, we likely won't touch the template system much. Instead, communications will be done using AJAX requests.
+
+You may want to consider using development versions of Django with better support for AJAX, or use [Django REST Framework](http://www.django-rest-framework.org/). But that is out of scope for this post. There is one code snippet I find useful as quick shortcut for small apps, though (FYI, Django 1.7 has a proper JsonResponse class as a subclass of HttpResponse):
+
+{% highlight python linenos %}
+from django.http import HttpResponse
+from json import dumps
+
+def JsonResponse(data):
+    return HttpResponse(dumps(data), content_type='application/json')
+{% endhighlight %}
+
+### Configuring templates
+*to be continued*
