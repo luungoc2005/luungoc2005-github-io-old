@@ -15,9 +15,9 @@ Ngoc's main technical skills lie in Web development, which includes the followin
 Front-End:
 - JavaScript (including ES6)
 - HTML5 and CSS3 including Less/Sass
-- Themes: React - Material UI and Bootstrap;
-- Component/Data Frameworks: React/Redux (Redux-thunk), jQuery
-- Development and Deploying: Mocha, Webpack, Babel
+- Themes: React - Material UI, Semantic UI and Bootstrap
+- Component/Data Frameworks: React/Redux (Redux-thunk/Redux-saga), jQuery
+- Development and Deploying: Jest (with Enzyme), Webpack 2
 - Others: HowlerJs, Google Charts, d3
 
 Back-End:
