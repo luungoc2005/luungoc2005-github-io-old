@@ -14,7 +14,7 @@ In the past few months I have been trying to find a good cloud GPU provider. My 
 
 Given this restriction, I can immediately exclude monthly charged services. I often only use up to 2 continuous weeks/month, and the discount by scale never offsets the added cost. This means that services like [Hetzner](https://www.hetzner.com/?country=us) and [LeaderGPU](https://www.leadergpu.com/) are excluded from this review.
 
-# FREE options
+# Free options
 
 These services have special mention thanks to being completely free, even though they have servere restrictions: Google Colab and Kaggle
 
@@ -33,5 +33,25 @@ GPU type: 1x Nvidia K80 (12 GB)
 Now with that out of the way - let's move on to the main part
 
 # Paid options
+
+1. Floydhub
+
+Floydhub is probably the most popular and biggest name out there - for good reason: they come with built-in versioning. They provide means for perfect replication of training runs - which can be very important for prototyping. They also provide access to a ton of common ML datasets already uploaded onto their server - but they do limit upload size. However their pricing also leaves a lot to be desired. They are basically AWS price plus overhead, so the price is basically highest there is.
+
+GPU type: 1x Nvidia K80 (12 GB) - Standard
+
+2. Crestle
+
+Crestle is basically paid Google Colab without the runtime/storage limitation. It's not exactly cheap at $0.59/hr, and free 1GB storage is very limited, you'll definitely have to pay for more storage. 
+
+GPU type: 1x Nvidia K80 (12 GB) - Standard
+
+3. Snark.AI
+
+This used to be a very affordable service with decent compromises - but it's dead now :(
+
+4. Paperspace
+
+This is my go-to service nowadays. They provide a wide range of GPU options which is comparable to but cheaper than both Google Compute Engine and AWS. They also provide upgradable storage options (but the storage upgrade is non-reversible). Basically nothing extraordinary - I wouldn't sing praises of them - but affordable and that everything is available. You may have to nudge their customer support for making the GPU option available - sometimes the in-dashboard requests are forgotten.
 
 (to be continued)
