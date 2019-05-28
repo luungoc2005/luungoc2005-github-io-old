@@ -1,5 +1,5 @@
 <head>
-  <style>
+  <style type="text/css">
 .botbot-chat-widget {
   position: fixed;
   bottom: 20px;
@@ -72,7 +72,8 @@ a.messenger-link {
     (function(win) {
       win.handleShowMessengerWidget = function handleShowMessengerWidget() {
         document.querySelector('.botbot-chat-widget').style.display = 'none';
-        document.querySelector('fb-root').style.display = 'initial';
+        document.querySelector('a.messenger-link').style.display = 'none';
+        document.querySelector('#fb-root').style.display = 'initial';
       }
       win.handleToggleChatWidget = function handleToggleChatWidget() {
         var chatWidget = document.querySelector('.botbot-chat-widget');
