@@ -109,6 +109,11 @@ a.messenger-link {
         xfbml            : true,
         version          : 'v3.2'
       });
+      FB.getLoginStatus(function(response){
+        if (response.status != "unknown") {
+          window.handleShowMessengerWidget();
+        }
+      });
     };
   
     (function(d, s, id) {
