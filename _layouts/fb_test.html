@@ -1,60 +1,64 @@
 <head>
   <style type="text/css">
-.botbot-chat-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-.botbot-chat-widget *, .botbot-chat-widget *::before, .botbot-chat-widget *::after {
-  box-sizing: border-box;
-}
-.botbot-chat-widget.show .chat-content {
-  display: block;
-}
-.botbot-chat-widget.show .msg-button {
-  background: #f5f5f5;
-}
-.botbot-chat-widget .msg-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: block;
-  padding: 15px;
-  border: 0;
-  box-shadow: 0 4px 5px #ddd, 4px 0 5px #ddd;
-  cursor: pointer;
-  outline: none;
-}
-.botbot-chat-widget .msg-button img {
-  max-width: 100%;
-}
-.botbot-chat-widget .msg-button:hover {
-  opacity: 0.9;
-}
-.botbot-chat-widget .chat-content {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 20px);
-  right: 0;
-  box-shadow: 0 4px 5px #ddd;
-  background: white;
-}
-.botbot-chat-widget .chat-content iframe {
-  max-width: 500px;
-  width: 90vw;
-  height: 520px;
-  border: 0;
-}
-a.messenger-link {
-  display: none;
-  position: absolute;
-  bottom: 40px;
-  right: 100px;
-  text-decoration: none;
-  color: #666;
-  font-family: sans-serif;
-}
+    .botbot-chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .botbot-chat-widget *, .botbot-chat-widget *::before, .botbot-chat-widget *::after {
+      box-sizing: border-box;
+    }
+    .botbot-chat-widget.show .chat-content {
+      display: block;
+    }
+    .botbot-chat-widget.show .msg-button {
+      background: #f5f5f5;
+    }
+    .botbot-chat-widget .msg-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: block;
+      padding: 15px;
+      border: 0;
+      box-shadow: 0 4px 5px #ddd, 4px 0 5px #ddd;
+      cursor: pointer;
+      outline: none;
+    }
+    .botbot-chat-widget .msg-button img {
+      max-width: 100%;
+    }
+    .botbot-chat-widget .msg-button:hover {
+      opacity: 0.9;
+    }
+    .botbot-chat-widget .chat-content {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 20px);
+      right: 0;
+      box-shadow: 0 4px 5px #ddd;
+      background: white;
+    }
+    .botbot-chat-widget .chat-content iframe {
+      max-width: 500px;
+      width: 90vw;
+      height: 520px;
+      border: 0;
+    }
+    a.messenger-link {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      right: 100px;
+      text-decoration: none;
+      color: #5898F4;
+      font-family: sans-serif;
+      font-size: 12px;
+      border: 1px solid #5898F4;
+      padding: 10px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
@@ -62,7 +66,7 @@ a.messenger-link {
   <a class="botbot-chat-widget">
     <div class="chat-content">
     </div>
-    <button class="msg-button" onclick="handleToggleChatWidget();" data-botbot-url="https://webchat.botbot.ai/Thermo%20Fisher%20V2">
+    <button class="msg-button" onclick="handleToggleChatWidget();" data-botbot-url="https://webchat.botbot.ai/sacombank-external-staging">
       <img src="https://dashboard.botbot.ai/assets/d16f4ba438e1cab71d86520c31ea1a29.png" alt="">
     </button>
     <a href="#" class="messenger-link" onclick="handleShowMessengerWidget()">Use Facebook Messenger</a>
@@ -73,7 +77,7 @@ a.messenger-link {
       win.handleShowMessengerWidget = function handleShowMessengerWidget() {
         document.querySelector('.botbot-chat-widget').style.display = 'none';
         document.querySelector('a.messenger-link').style.display = 'none';
-        document.querySelector('#fb-root').style.display = 'initial';
+        FB.XFBML.parse();
       }
       win.handleToggleChatWidget = function handleToggleChatWidget() {
         var chatWidget = document.querySelector('.botbot-chat-widget');
@@ -106,7 +110,7 @@ a.messenger-link {
   
     window.fbAsyncInit = function() {
       FB.init({
-        xfbml            : true,
+        xfbml            : false,
         version          : 'v3.2'
       });
       FB.getLoginStatus(function(response){
@@ -127,9 +131,9 @@ a.messenger-link {
   
   <!-- Your customer chat code -->
   <div class="fb-customerchat"
-        style="position:absolute;top:0;left:0"
-        attribution=setup_tool
-        
-        page_id="413037982148540">
+    style="position:absolute;top:0;left:0"
+    attribution=setup_tool
+    
+    page_id="827464864306935">
   </div>
 </body>
